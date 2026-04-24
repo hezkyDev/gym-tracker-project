@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#111827" />
+  <title>4-Day Gym Tracker Pro</title>
+
+  <!-- Chart library for bodyweight progress -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <h1>🏖️ Gym Tracker Pro</h1>
+      <p class="subtitle">4-day lifting plan • Weekly history • Auto next-weight suggestions • Bodyweight chart • iCloud backup</p>
+    </header>
+
+    <section class="topbar" aria-label="Week controls">
+      <select id="weekSelect" aria-label="Select week"></select>
+      <button class="btn blue" type="button" data-action="next-week">Next Week ➜</button>
+    </section>
+
+    <!-- TRAINING VIEW -->
+    <section id="training" class="view active" aria-label="Training tracker">
+      <div class="week-banner">
+        <strong id="weekTitle">Week 1</strong>
+        <div class="small" id="weekPhase">Cut phase</div>
+      </div>
+
+      <nav class="tabs" id="tabs" aria-label="Training days"></nav>
+      <section id="dayCard" class="card"></section>
+    </section>
+
+    <!-- PROGRESS VIEW -->
+    <section id="progress" class="view" aria-label="Bodyweight progress">
+      <div class="card">
+        <div class="section-header">
+          <div>
+            <h2>📈 Bodyweight Progress</h2>
+            <div class="small">Save your average weekly bodyweight. Morning weekly average is best.</div>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <input id="weightWeekInput" type="number" min="1" max="16" placeholder="Week" inputmode="numeric" />
+          <input id="weightInput" type="number" step="0.1" placeholder="kg" inputmode="decimal" />
+          <button class="btn" type="button" data-action="save-weight">Save</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <canvas id="weightChart"></canvas>
+      </div>
+
+      <div class="card" id="weightTable"></div>
+    </section>
+
+    <!-- MEAL PLAN VIEW -->
+    <section id="meal" class="view" aria-label="7 days meal plan">
+      <div class="card">
+        <div class="section-header">
+          <div>
+            <h2>🍱 7 Days Meal Plan</h2>
+            <div class="small">
+              Objective: realistic Malaysian-style meal plan to stay lean, support training, and stick close to ~1900 kcal.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="meal-tabs" id="mealTabs" aria-label="Meal plan days"></nav>
+      <section id="mealCard" class="card"></section>
+
+      <div class="card">
+        <h2>🧠 How To Use This Plan</h2>
+        <p class="small">
+          <strong>Portion control is very important:</strong><br>
+          Rice: 1 cup max per meal<br>
+          Oil: keep low<br>
+          Protein: do not skip
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>⚠️ Rules To Stay Lean</h2>
+        <ul class="clean-list">
+          <li>No sugary drinks such as teh tarik or soft drinks</li>
+          <li>Limit fried food</li>
+          <li>Protein every meal</li>
+          <li>Stick to around 1900 kcal</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>🔥 Supplement Use</h2>
+        <ul class="clean-list">
+          <li><strong>Whey:</strong> post-workout</li>
+          <li><strong>USN Fast Grow Anabolic:</strong> avoid during cut</li>
+          <li><strong>Pre-workout drink:</strong> OK</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>💬 Real Talk</h2>
+        <p class="small">
+          This plan works because it is realistic, flexible, and sustainable.
+          It uses Malaysian-style food, keeps protein high, and avoids making the diet too boring.
+        </p>
+      </div>
+    </section>
+
+    <!-- HISTORY VIEW -->
+    <section id="history" class="view" aria-label="Training history">
+      <div class="card">
+        <h2>📚 Weekly Training History</h2>
+        <div class="small">Saved sessions appear here by week and day. This data also powers auto suggestions.</div>
+      </div>
+      <div class="card" id="historyList"></div>
+    </section>
+
+    <!-- GUIDE VIEW -->
+    <section id="guide" class="view" aria-label="Guide and backup">
+      <div class="card">
+        <h2>⚙️ Auto Weight Suggestion Rules</h2>
+        <p class="small">
+          <strong>Green light:</strong> If all working sets reach the top of the rep range, next session suggests adding weight.<br><br>
+          <strong>Repeat:</strong> If reps are inside the target range, repeat the same weight and aim for more reps.<br><br>
+          <strong>Reduce or retry:</strong> If any set misses the minimum rep target, repeat or slightly reduce the weight.
+        </p>
+        <span class="badge">Barbell/machine: +2.5kg</span>
+        <span class="badge">DB/isolation: +1kg</span>
+        <span class="badge">Leg press: +5kg</span>
+      </div>
+
+      <div class="card">
+        <h2>🗓️ 16-Week Structure</h2>
+        <p class="small">
+          <strong>Weeks 1–4:</strong> Cut. Maintain strength and keep form strict.<br>
+          <strong>Week 5:</strong> Transition/deload. Reduce volume around 20%.<br>
+          <strong>Weeks 6–16:</strong> Lean bulk. Push progressive overload.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>☁️ iCloud Backup Guide</h2>
+        <p class="small">
+          <strong>Export (Save your data):</strong><br>
+          1. Tap <strong>📤 Export Data</strong><br>
+          2. Choose <strong>Save to Files</strong><br>
+          3. Select <strong>iCloud Drive</strong> and create a folder like <strong>GymTracker</strong><br><br>
+
+          <strong>Import (Restore your data):</strong><br>
+          1. Tap <strong>📥 Import Data</strong><br>
+          2. Select your saved file from iCloud<br>
+          3. Your data will load automatically<br><br>
+
+          <strong>Tip:</strong> Backup once per week after your last workout.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>☁️ iCloud Backup</h2>
+        <p class="small">Use Export Data after workouts to save a backup file to iCloud Drive. Use Import Data to restore progress later.</p>
+        <div class="actions">
+          <button class="btn purple" type="button" data-action="export-data">📤 Export Data</button>
+          <button class="btn blue" type="button" data-action="import-data">📥 Import Data</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="footer-nav" aria-label="Main navigation">
+    <button class="nav-btn active" type="button" data-view="training">🏋️<br>Train</button>
+    <button class="nav-btn" type="button" data-view="progress">📈<br>Progress</button>
+    <button class="nav-btn" type="button" data-view="meal">🍱<br>Meal</button>
+    <button class="nav-btn" type="button" data-view="history">📚<br>History</button>
+    <button class="nav-btn" type="button" data-view="guide">⚙️<br>Guide</button>
+  </nav>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
