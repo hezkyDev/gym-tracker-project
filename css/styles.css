@@ -1,474 +1,556 @@
 /* =========================================================
-       1. Theme
-    ========================================================= */
-    :root {
-      --bg-1: #0f172a;
-      --bg-2: #1e293b;
-      --bg-3: #111827;
-      --card: rgba(30, 41, 59, 0.94);
-      --card-dark: rgba(15, 23, 42, 0.94);
-      --soft: #334155;
-      --line: rgba(255, 255, 255, 0.10);
-      --text: #f8fafc;
-      --muted: #cbd5e1;
-      --muted-2: #94a3b8;
-      --accent: #f59e0b;
-      --accent-soft: rgba(245, 158, 11, 0.20);
-      --green: #22c55e;
-      --red: #ef4444;
-      --blue: #38bdf8;
-      --purple: #a78bfa;
-      --radius-lg: 24px;
-      --radius-md: 18px;
-      --shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(245, 158, 11, 0.16), transparent 34%),
-        linear-gradient(155deg, var(--bg-1), var(--bg-2) 55%, var(--bg-3));
-      padding: 18px;
-      padding-bottom: calc(96px + env(safe-area-inset-bottom));
-    }
-
-    button,
-    input,
-    select {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    /* =========================================================
-       2. Layout
-    ========================================================= */
-    .app-shell {
-      width: min(100%, 860px);
-      margin: 0 auto;
-    }
-
-    .hero {
-      margin: 8px 0 14px;
-    }
-
-    .hero h1 {
-      margin: 0 0 6px;
-      font-size: clamp(28px, 8vw, 42px);
-      line-height: 0.98;
-      letter-spacing: -0.05em;
-    }
-
-    .subtitle {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.45;
-    }
-
-    .topbar {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    .view { display: none; }
-    .view.active { display: block; }
-
-    .card,
-    .week-banner,
-    .exercise {
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-    }
-
-    .card {
-      margin-bottom: 16px;
-      padding: 16px;
-      border-radius: var(--radius-lg);
-      background: var(--card);
-    }
-
-    .week-banner {
-      margin-bottom: 12px;
-      padding: 14px;
-      border-radius: var(--radius-lg);
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.24), rgba(56, 189, 248, 0.12));
-    }
-
-    .section-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    h2, h3, p { margin-top: 0; }
-
-    h2 {
-      margin-bottom: 6px;
-      font-size: 20px;
-      letter-spacing: -0.02em;
-    }
-
-    h3 {
-      margin-bottom: 6px;
-      font-size: 16px;
-    }
-
-    .small {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.5;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: 0.85fr 1fr 1fr;
-      gap: 8px;
-    }
-
-    .row {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    /* =========================================================
-       3. Controls
-    ========================================================= */
-    input,
-    select {
-      width: 100%;
-      min-height: 44px;
-      border: 0;
-      border-radius: 14px;
-      padding: 11px 12px;
-      color: #111827;
-      background: #f8fafc;
-      font-size: 16px;
-      text-align: center;
-      outline: none;
-    }
-
-    input:focus,
-    select:focus {
-      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.30);
-    }
-
-    .btn {
-      min-height: 44px;
-      border: 0;
-      border-radius: 16px;
-      padding: 12px 14px;
-      color: #111827;
-      background: var(--accent);
-      font-weight: 900;
-      font-size: 15px;
-    }
-
-    .btn.secondary { background: var(--soft); color: #fff; }
-    .btn.danger { background: var(--red); color: #fff; }
-    .btn.blue { background: var(--blue); color: #082f49; }
-    .btn.purple { background: var(--purple); color: #1e1b4b; }
-    .btn.full { width: 100%; }
-
-    .tabs {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin: 12px 0;
-    }
-
-    .tab {
-      border: 0;
-      border-radius: 16px;
-      padding: 12px 6px;
-      color: #fff;
-      background: var(--soft);
-      font-weight: 900;
-      font-size: 13px;
-    }
-
-    .tab.active {
-      color: #111827;
-      background: var(--accent);
-    }
-
-    .actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      margin: 4px 4px 0 0;
-      padding: 6px 10px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      background: var(--card-dark);
-      font-size: 12px;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      margin: 3px 2px 0 0;
-      padding: 6px 9px;
-      border-radius: 999px;
-      color: #e2e8f0;
-      background: var(--soft);
-      font-size: 12px;
-      line-height: 1.25;
-    }
-
-    /* =========================================================
-       4. Training Cards
-    ========================================================= */
-    .exercise {
-      margin-top: 12px;
-      padding: 14px;
-      border-radius: 20px;
-      background: var(--card-dark);
-    }
-
-    .exercise-header {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 12px;
-      align-items: start;
-    }
-
-    .exercise-title {
-      font-weight: 950;
-      font-size: 16px;
-      letter-spacing: -0.01em;
-    }
-
-    .exercise-hint {
-      margin-top: 4px;
-      color: var(--muted-2);
-      font-size: 12px;
-    }
-
-    .suggestion {
-      min-width: 116px;
-      color: #fde68a;
-      text-align: right;
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .suggestion-detail {
-      margin-top: 4px;
-      color: #bfdbfe;
-      text-align: right;
-      font-size: 11px;
-      line-height: 1.35;
-    }
-
-    .set-row {
-      display: grid;
-      grid-template-columns: 36px 1fr 1fr 44px;
-      gap: 8px;
-      align-items: center;
-      margin-top: 9px;
-    }
-
-    .set-no {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .done-btn {
-      height: 44px;
-      border: 0;
-      border-radius: 12px;
-      color: white;
-      background: var(--soft);
-      font-weight: 950;
-    }
-
-    .done-btn.on {
-      color: #052e16;
-      background: var(--green);
-    }
-
-    /* =========================================================
-       5. History / Progress
-    ========================================================= */
-    .log-item {
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(203, 213, 225, 0.18);
-    }
-
-    .log-item:last-child { border-bottom: 0; }
-
-    .target-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 8px;
-      padding: 9px 0;
-      border-bottom: 1px solid rgba(203, 213, 225, 0.18);
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .target-row:last-child { border-bottom: 0; }
-    .target-row strong { color: var(--text); }
-
-    canvas { max-height: 260px; }
-
-    /* =========================================================
-       6. Bottom Navigation
-    ========================================================= */
-    .footer-nav {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 7px;
-      padding: 10px 10px calc(10px + env(safe-area-inset-bottom));
-      border-top: 1px solid var(--line);
-      background: rgba(15, 23, 42, 0.97);
-      backdrop-filter: blur(14px);
-      z-index: 20;
-    }
-
-    .nav-btn {
-      border: 0;
-      border-radius: 14px;
-      padding: 11px 4px;
-      color: white;
-      background: var(--soft);
-      font-weight: 900;
-      font-size: 12px;
-    }
-
-    .nav-btn.active {
-      color: #111827;
-      background: var(--accent);
-    }
-
-    @media (max-width: 430px) {
-      body { padding-inline: 14px; }
-      .exercise-header { grid-template-columns: 1fr; }
-      .suggestion, .suggestion-detail { text-align: left; }
-      .actions { grid-template-columns: 1fr; }
-    }
-
-
-    /* =========================================================
-       7. Meal Plan
-    ========================================================= */
-    .meal-tabs {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin: 12px 0 16px;
-    }
-
-    .meal-tab {
-      border: 0;
-      border-radius: 16px;
-      padding: 12px 6px;
-      color: white;
-      background: var(--soft);
-      font-weight: 900;
-      font-size: 13px;
-    }
-
-    .meal-tab.active {
-      color: #111827;
-      background: var(--accent);
-    }
-
-    .meal-title {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .meal-title h2 { margin: 0; }
-
-    .meal-objective {
-      padding: 12px;
-      margin-bottom: 14px;
-      border: 1px solid rgba(245, 158, 11, 0.35);
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.20), rgba(56, 189, 248, 0.10));
-    }
-
-    .meal-block {
-      padding: 13px;
-      margin-top: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 18px;
-      background: var(--card2);
-    }
-
-    .meal-block h3 {
-      margin: 0 0 8px;
-      font-size: 15px;
-    }
-
-    .meal-block ul,
-    .clean-list {
-      margin: 0;
-      padding-left: 18px;
-    }
-
-    .meal-block li,
-    .clean-list li {
-      margin-bottom: 4px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
-    .meal-note {
-      margin-top: 10px;
-      color: #fde68a;
-      font-size: 12px;
-      line-height: 1.45;
-    }
-
-    @media (max-width: 390px) {
-      .nav-btn {
-        font-size: 11px;
-        padding-left: 2px;
-        padding-right: 2px;
-      }
-
-      .meal-tabs { grid-template-columns: repeat(3, 1fr); }
-    }
+   1. Theme
+========================================================= */
+:root {
+  --bg-1: #0f172a;
+  --bg-2: #1e293b;
+  --bg-3: #111827;
+  --card: rgba(30, 41, 59, 0.94);
+  --card-dark: rgba(15, 23, 42, 0.94);
+  --soft: #334155;
+  --line: rgba(255, 255, 255, 0.10);
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --muted-2: #94a3b8;
+  --accent: #f59e0b;
+  --accent-soft: rgba(245, 158, 11, 0.20);
+  --green: #22c55e;
+  --red: #ef4444;
+  --blue: #38bdf8;
+  --purple: #a78bfa;
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(245, 158, 11, 0.16), transparent 34%),
+    linear-gradient(155deg, var(--bg-1), var(--bg-2) 55%, var(--bg-3));
+
+  /*
+    iPhone safe-area fix:
+    Keeps content below Dynamic Island / notch.
+  */
+  padding-inline: 18px;
+  padding-top: calc(env(safe-area-inset-top) + 28px);
+  padding-bottom: calc(96px + env(safe-area-inset-bottom));
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================================================
+   2. Layout
+========================================================= */
+.app-shell {
+  width: min(100%, 860px);
+  margin: 0 auto;
+}
+
+.hero {
+  margin: 10px 0 18px;
+}
+
+.hero h1 {
+  margin: 0 0 10px;
+  font-size: clamp(32px, 8vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.topbar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 16px;
+  margin-bottom: 14px;
+}
+
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+}
+
+.card,
+.week-banner,
+.exercise {
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.card {
+  margin-bottom: 16px;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  background: var(--card);
+}
+
+.week-banner {
+  margin-bottom: 12px;
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.24), rgba(56, 189, 248, 0.12));
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h2 {
+  margin-bottom: 6px;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+.small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr 1fr;
+  gap: 8px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* =========================================================
+   3. Controls
+========================================================= */
+input,
+select {
+  width: 100%;
+  min-height: 44px;
+  border: 0;
+  border-radius: 14px;
+  padding: 11px 12px;
+  color: #111827;
+  background: #f8fafc;
+  font-size: 16px;
+  text-align: center;
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.30);
+}
+
+.btn {
+  min-height: 44px;
+  border: 0;
+  border-radius: 16px;
+  padding: 12px 14px;
+  color: #111827;
+  background: var(--accent);
+  font-weight: 900;
+  font-size: 15px;
+}
+
+.btn.secondary {
+  background: var(--soft);
+  color: #fff;
+}
+
+.btn.danger {
+  background: var(--red);
+  color: #fff;
+}
+
+.btn.blue {
+  background: var(--blue);
+  color: #082f49;
+}
+
+.btn.purple {
+  background: var(--purple);
+  color: #1e1b4b;
+}
+
+.btn.full {
+  width: 100%;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.tab {
+  border: 0;
+  border-radius: 16px;
+  padding: 12px 6px;
+  color: #fff;
+  background: var(--soft);
+  font-weight: 900;
+  font-size: 13px;
+}
+
+.tab.active {
+  color: #111827;
+  background: var(--accent);
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin: 4px 4px 0 0;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  background: var(--card-dark);
+  font-size: 12px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 3px 2px 0 0;
+  padding: 6px 9px;
+  border-radius: 999px;
+  color: #e2e8f0;
+  background: var(--soft);
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+/* =========================================================
+   4. Training Cards
+========================================================= */
+.exercise {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 20px;
+  background: var(--card-dark);
+}
+
+.exercise-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: start;
+}
+
+.exercise-title {
+  font-weight: 950;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+
+.exercise-hint {
+  margin-top: 4px;
+  color: var(--muted-2);
+  font-size: 12px;
+}
+
+.suggestion {
+  min-width: 116px;
+  color: #fde68a;
+  text-align: right;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.suggestion-detail {
+  margin-top: 4px;
+  color: #bfdbfe;
+  text-align: right;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.set-row {
+  display: grid;
+  grid-template-columns: 36px 1fr 1fr 44px;
+  gap: 8px;
+  align-items: center;
+  margin-top: 9px;
+}
+
+.set-no {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.done-btn {
+  height: 44px;
+  border: 0;
+  border-radius: 12px;
+  color: white;
+  background: var(--soft);
+  font-weight: 950;
+}
+
+.done-btn.on {
+  color: #052e16;
+  background: var(--green);
+}
+
+/* =========================================================
+   5. History / Progress
+========================================================= */
+.log-item {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(203, 213, 225, 0.18);
+}
+
+.log-item:last-child {
+  border-bottom: 0;
+}
+
+.target-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(203, 213, 225, 0.18);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.target-row:last-child {
+  border-bottom: 0;
+}
+
+.target-row strong {
+  color: var(--text);
+}
+
+canvas {
+  max-height: 260px;
+}
+
+/* =========================================================
+   6. Bottom Navigation
+========================================================= */
+.footer-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 7px;
+  padding: 10px 10px calc(10px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line);
+  background: rgba(15, 23, 42, 0.97);
+  backdrop-filter: blur(14px);
+  z-index: 20;
+}
+
+.nav-btn {
+  border: 0;
+  border-radius: 14px;
+  padding: 11px 4px;
+  color: white;
+  background: var(--soft);
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.nav-btn.active {
+  color: #111827;
+  background: var(--accent);
+}
+
+/* =========================================================
+   7. Meal Plan
+========================================================= */
+.meal-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 12px 0 16px;
+}
+
+.meal-tab {
+  border: 0;
+  border-radius: 16px;
+  padding: 12px 6px;
+  color: white;
+  background: var(--soft);
+  font-weight: 900;
+  font-size: 13px;
+}
+
+.meal-tab.active {
+  color: #111827;
+  background: var(--accent);
+}
+
+.meal-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.meal-title h2 {
+  margin: 0;
+}
+
+.meal-objective {
+  padding: 12px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.20), rgba(56, 189, 248, 0.10));
+}
+
+.meal-block {
+  padding: 13px;
+  margin-top: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  background: var(--card-dark);
+}
+
+.meal-block h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.meal-block ul,
+.clean-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.meal-block li,
+.clean-list li {
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.meal-note {
+  margin-top: 10px;
+  color: #fde68a;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+/* =========================================================
+   8. Mobile Adjustments
+========================================================= */
+@media (max-width: 430px) {
+  body {
+    padding-inline: 14px;
+    padding-top: calc(env(safe-area-inset-top) + 32px);
+  }
+
+  .hero {
+    margin-top: 12px;
+    margin-bottom: 18px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  .exercise-header {
+    grid-template-columns: 1fr;
+  }
+
+  .suggestion,
+  .suggestion-detail {
+    text-align: left;
+  }
+
+  .actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 390px) {
+  .nav-btn {
+    font-size: 11px;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .meal-tabs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
