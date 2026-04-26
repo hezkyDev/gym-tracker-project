@@ -68,18 +68,18 @@
           { name: 'Meal 2', items: ['Nasi putih (1 cup)', 'Ayam grilled', 'Sayur'] },
           { name: 'Post-workout', items: ['Whey protein'] },
           { name: 'Meal 3', items: ['Tomyam ayam (clear)', 'Small rice'] },
-          { name: 'Meal 4', items: ['Greek yogurt + almonds'] }
+          { name: 'Meal 4', items: ['Low-fat milk + almonds'] }
         ]
       },
       {
         day: 'Day 2',
         title: 'High Protein Local Meals',
         meals: [
-          { name: 'Meal 1', items: ['Oats + milk', 'Peanut butter', 'Banana'] },
+          { name: 'Meal 1', items: ['3 eggs', 'Wholemeal bread', 'Peanut butter'] },
           { name: 'Meal 2', items: ['Nasi + ikan bakar', 'Sayur'] },
-          { name: 'Post-workout', items: ['Greek yogurt'] },
+          { name: 'Post-workout', items: ['Low-fat milk'] },
           { name: 'Meal 3', items: ['Daging stir fry (low oil)', 'Small rice'] },
-          { name: 'Meal 4', items: ['Tuna + wholemeal bread'] }
+          { name: 'Meal 4', items: ['2 boiled eggs + fruit'] }
         ]
       },
       {
@@ -87,21 +87,21 @@
         title: 'Lean Protein Focus',
         meals: [
           { name: 'Meal 1', items: ['2 eggs + 2 egg whites', 'Wholemeal bread', 'Apple'] },
-          { name: 'Meal 2', items: ['Nasi ayam — no skin, less rice'] },
+          { name: 'Meal 2', items: ['Nasi ayam (no skin, less rice)'] },
           { name: 'Post-workout', items: ['Whey protein'] },
           { name: 'Meal 3', items: ['Ayam masak kunyit (less oil)', 'Sayur', 'Small rice'] },
-          { name: 'Meal 4', items: ['Milk + nuts'] }
+          { name: 'Meal 4', items: ['Milk + peanuts'] }
         ]
       },
       {
         day: 'Day 4',
         title: 'Simple Clean Meals',
         meals: [
-          { name: 'Meal 1', items: ['Oats + whey protein', 'Banana'] },
+          { name: 'Meal 1', items: ['3 eggs', 'Wholemeal bread', 'Banana'] },
           { name: 'Meal 2', items: ['Nasi + ayam bakar', 'Sayur'] },
-          { name: 'Post-workout', items: ['Greek yogurt'] },
-          { name: 'Meal 3', items: ['Sup ayam', 'Rice (small)'] },
-          { name: 'Meal 4', items: ['Tuna salad'] }
+          { name: 'Post-workout', items: ['Whey protein'] },
+          { name: 'Meal 3', items: ['Sup ayam', 'Small rice'] },
+          { name: 'Meal 4', items: ['2 boiled eggs + almonds'] }
         ]
       },
       {
@@ -110,31 +110,31 @@
         meals: [
           { name: 'Meal 1', items: ['3 eggs', 'Wholemeal bread', 'Peanut butter'] },
           { name: 'Meal 2', items: ['Nasi campur', 'Ayam', 'Sayur', 'Small rice'] },
-          { name: 'Post-workout', items: ['Whey protein'] },
+          { name: 'Post-workout', items: ['Low-fat milk'] },
           { name: 'Meal 3', items: ['Ikan stim', 'Vegetables', 'Rice'] },
-          { name: 'Meal 4', items: ['Yogurt + fruit'] }
+          { name: 'Meal 4', items: ['Milk + fruit'] }
         ]
       },
       {
         day: 'Day 6',
         title: 'Higher Satiety Day',
         meals: [
-          { name: 'Meal 1', items: ['Oats + milk', 'Almonds'] },
+          { name: 'Meal 1', items: ['3 eggs + bread', 'Banana'] },
           { name: 'Meal 2', items: ['Nasi + daging grill', 'Sayur'] },
           { name: 'Post-workout', items: ['Whey protein'] },
           { name: 'Meal 3', items: ['Tomyam seafood', 'Small rice'] },
-          { name: 'Meal 4', items: ['Tuna + bread'] }
+          { name: 'Meal 4', items: ['2 boiled eggs + peanuts'] }
         ]
       },
       {
         day: 'Day 7',
         title: 'Flexible / Slight Treat',
         meals: [
-          { name: 'Meal 1', items: ['Roti canai (1)', '2 boiled eggs'] },
-          { name: 'Meal 2', items: ['Nasi ayam — controlled portion'] },
+          { name: 'Meal 1', items: ['Roti canai (1) + 2 boiled eggs'] },
+          { name: 'Meal 2', items: ['Nasi ayam (controlled portion)'] },
           { name: 'Post-workout', items: ['Whey protein'] },
           { name: 'Meal 3', items: ['Ayam grill / steak', 'Potatoes'] },
-          { name: 'Meal 4', items: ['Milk + nuts'] }
+          { name: 'Meal 4', items: ['Milk + almonds'] }
         ],
         note: 'Flexible day. Keep portion controlled and avoid turning this into a cheat day.'
       }
