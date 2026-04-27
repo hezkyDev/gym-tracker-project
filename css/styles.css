@@ -554,3 +554,28 @@ canvas {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* =========================================================
+   9. Alternative Exercise Input
+========================================================= */
+
+.alternative-box {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  border-radius: 16px;
+  background: rgba(245, 158, 11, 0.08);
+}
+
+.alternative-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #fde68a;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.alternative-input {
+  width: 100%;
+  text-align: left;
+}
